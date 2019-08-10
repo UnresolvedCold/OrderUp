@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/style_dialog_default"
+    android:gravity="center">
+    <EditText
+        android:id="@+id/email_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:minWidth="200dp"
+        android:background="@drawable/style_button_additems"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:hint="Enter a default email address"
+
+        />
+    <Button
+        android:id="@+id/email_okbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_button_ripple"
+        android:text="ok"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_margin="10dp"/>
+
+</LinearLayout>

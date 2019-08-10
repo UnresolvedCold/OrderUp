@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home" android:icon="@drawable/ic_home_white" ></item>
+    <item android:title="Change Email" android:icon="@drawable/ic_email_change"></item>
+    <item android:id="@+id/item_callwaiter" android:title="Call Waiter" android:icon="@drawable/icon_callwaiter"></item>
+    <item android:title="About" android:icon="@drawable/icon_info"></item>
+
+</menu>

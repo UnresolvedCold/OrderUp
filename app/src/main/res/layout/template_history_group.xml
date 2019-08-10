@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:layout_margin="5dp"
+        >
+
+       <LinearLayout
+           android:id="@+id/history_mainView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:gravity="center_vertical"
+           >
+           <TextView
+               android:id="@+id/history_group_ResName"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:gravity="left"
+               android:text="Rest Name"
+               android:layout_weight="1"
+               android:layout_marginEnd="10dp"
+               android:textStyle="bold"
+               android:textSize="18sp"
+               android:textColor="#004D72"/>
+           <TextView
+               android:id="@+id/history_group_Date"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Date"
+               android:layout_marginEnd="10dp"
+               android:minWidth="100dp"
+               android:gravity="center"
+               android:textStyle="normal"
+               android:textSize="14sp"
+               android:textColor="#2C2C2C"/>
+           <TextView
+               android:id="@+id/ViewBill"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="BILL"
+               android:background="@drawable/shape_roundedsquare"
+               android:textColor="#FFFFFF"
+               android:paddingEnd="5dp"
+               android:paddingStart="5dp"
+               android:paddingTop="5dp"
+               android:paddingBottom="5dp"
+               android:layout_marginEnd="5dp"
+               android:textSize="12sp"
+               android:textStyle="bold"
+               android:translationZ="2dp"
+               />
+
+       </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/history_itemsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/history_mainView"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            >
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/history_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/blank_history"
+            android:layout_marginBottom="0dp"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/history_more_image"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/shape_roundedsquare"
+                android:src="@drawable/ic_more" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/blank_history"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/history_itemsContainer"
+            android:layout_marginTop="5dp"
+            android:background="#D3D3D3"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

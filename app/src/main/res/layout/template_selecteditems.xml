@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/template_smenu_veg_nonveg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/icon_veg"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/template_smenu_itemName"
+            android:text="Item Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp" />
+
+        <TextView
+            android:id="@+id/template_smenu_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="cost"/>
+
+        <LinearLayout
+            android:id="@+id/template_smenu_IncDecHolder"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:minWidth="60dp"
+            android:orientation="horizontal"
+            android:background="@drawable/style_button_additems"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/template_smenu_IncDecHolder_dec"
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_remove"
+                android:padding="5dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/template_smenu_IncDecHolder_view"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorMain"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="0" />
+
+            <ImageView
+                android:id="@+id/template_smenu_IncDecHolder_inc"
+                android:layout_width="25dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_add"
+                android:padding="5dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="5dp"
+        >
+        <TextView
+        android:id="@+id/template_smenu_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:textSize="14sp"
+            android:visibility="gone"
+        android:text="price"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E2E2E2"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone">
+
+    </LinearLayout>
+
+
+</LinearLayout>

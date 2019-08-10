@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/root_bill"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:nav="http://schemas.android.com/apk/com.andremion.floatingnavigationview"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackGround"
+    tools:context=".BillActivity">
+
+    <RelativeLayout
+        android:id="@+id/anchor_bill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            android:id="@+id/bill_appbar"
+            layout="@layout/appbar"></include>
+
+        <ScrollView
+            android:id="@+id/scroll_revBIll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/bill_appbar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp">
+
+            <LinearLayout
+                android:id="@+id/billItemList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/bill_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/style_button_softsquare"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_download" />
+
+        <ImageView
+            android:id="@+id/bill_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/style_button_softsquare"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_email" />
+    </RelativeLayout>
+
+    <com.andremion.floatingnavigationview.FloatingNavigationView
+        android:id="@+id/bill_floating_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+
+        android:background="@color/colorBar"
+        android:backgroundTint="@color/colorBar"
+        android:elevation="0dp"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:borderWidth="0dp"
+        app:fabTextColor="@color/colorTextMain"
+
+        app:fabCustomSize="@dimen/icon_size"
+        app:fabIconColor="@color/colorIcons"
+
+        app:drawMenuBelowFab="true"
+        app:elevation="0dp"
+        app:fabSize="mini"
+        app:fabType="square"
+        app:fab_shadowColor="@color/colorBar"
+
+        app:headerLayout="@layout/navigation_view_header"
+        app:layout_anchor="@+id/anchor_bill"
+        app:layout_anchorGravity="left|top"
+        app:maxImageSize="24dp"
+        app:menu="@menu/menu_navigation_view_nocallwaiter" />
+
+
+</android.support.design.widget.CoordinatorLayout>

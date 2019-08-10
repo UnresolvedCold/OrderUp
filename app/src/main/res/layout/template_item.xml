@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:padding="5dp"
+    android:layout_marginTop="5dp"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/template_menu_veg_nonveg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_veg"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/template_menu_itemName"
+                android:text="Item Name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/colorTextMain"
+               android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                 />
+
+            <Button
+                android:id="@+id/template_menu_Add"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:textSize="12sp"
+                android:background="@drawable/style_button_additems"
+                android:textColor="@color/colorMain"
+                android:textStyle="bold"
+                android:layout_marginRight="5dp"
+                android:text="Add"/>
+
+            <LinearLayout
+                android:id="@+id/template_menu_IncDecHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:minWidth="60dp"
+
+                android:background="@drawable/style_button_additems"
+                android:orientation="horizontal"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/template_menu_IncDecHolder_dec"
+                    android:layout_width="25dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_remove"
+                    android:padding="5dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/template_menu_IncDecHolder_view"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorMain"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:text="0"
+                    />
+
+                <ImageView
+                    android:id="@+id/template_menu_IncDecHolder_inc"
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_add"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/template_menu_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:textSize="14sp"
+            android:textColor="@color/colorTextMain"
+            android:text="cost"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/DetailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/Details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="2dp"
+
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

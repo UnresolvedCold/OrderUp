@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/root_order"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".OrderedItemsActivity"
+    android:background="@color/colorBackGround">
+
+    <RelativeLayout
+        android:id="@+id/anchor_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/OrderedItems_appbar"
+            layout="@layout/appbar"></include>
+
+        <ScrollView
+            android:id="@+id/orderedItems_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_above="@+id/orderedItems_proceed"
+            android:layout_below="@+id/OrderedItems_appbar"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp">
+
+            <LinearLayout
+                android:id="@+id/orderedItemsList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/animation_orderedItems_emptylist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:translationZ="0dp">
+
+            <com.airbnb.lottie.LottieAnimationView
+
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                app:lottie_rawRes="@raw/empty_list"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:text="Empty"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/template_ordered_Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_roundedsquare"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:translationZ="5dp"
+            android:paddingEnd="7dp"
+            android:paddingStart="7dp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignBottom="@+id/orderedItems_scroll"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Add More Items"
+                android:textColor="#FFFFFFFF" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:background="@drawable/style_button_menu_proceed"
+            android:id="@+id/orderedItems_proceed"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:orientation="vertical"
+            android:translationZ="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/template_ordered_Pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Pay"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:weightSum="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="2dp"
+                android:text="Call waiter to complete the payment"
+                android:weightSum="1"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.andremion.floatingnavigationview.FloatingNavigationView
+        android:id="@+id/order_floating_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+
+        android:background="@color/colorBar"
+        android:backgroundTint="@color/colorBar"
+        android:elevation="0dp"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:borderWidth="0dp"
+        app:fabTextColor="@color/colorTextMain"
+
+        app:fabCustomSize="@dimen/icon_size"
+        app:fabIconColor="@color/colorIcons"
+
+        app:drawMenuBelowFab="true"
+        app:elevation="0dp"
+        app:fabSize="mini"
+        app:fabType="square"
+        app:fab_shadowColor="@color/colorBar"
+
+        app:headerLayout="@layout/navigation_view_header"
+        app:layout_anchor="@+id/anchor_order"
+        app:layout_anchorGravity="left|top"
+        app:maxImageSize="24dp"
+        app:menu="@menu/menu_navigation_view_nocallwaiter"
+        android:visibility="gone"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

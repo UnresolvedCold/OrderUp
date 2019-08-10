@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBar"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="50dp"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp">
+
+                    <Switch
+                        android:id="@+id/switch_isVegSwitcher"
+                        style="@style/BrandedSwitch.control"
+                        android:theme="@style/BrandedSwitch.control"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.70"
+                        android:scaleY="0.70"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Only Veg"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorTextMain"
+
+                        />
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/appbar_menu_backhbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="10dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:src="@drawable/ic_home_white"
+                    android:visibility="gone"
+                    />
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+
+
+                </LinearLayout>
+
+
+
+                <ImageView
+                    android:id="@+id/appbar_menu_searchbtn"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:scaleType="fitCenter"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_search"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/appbar_menu_cartbtn"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:scaleType="fitCenter"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_cart_white"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/appbar_menu_more"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:scaleType="fitCenter"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_moremenu"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/appbar_menu_title"
+            android:textColor="@color/colorTextMain"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="title"
+
+            />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/appbar_menu_searchcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:animateLayoutChanges="true"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/appbar_menu_searchText"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:hint="Enter an item to search"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:textColor="@color/colorTextMain"
+            android:textColorHint="@color/colorTextBack"
+            android:gravity="center"
+            android:cursorVisible="true"
+            android:background="@drawable/style_edittext"/>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
