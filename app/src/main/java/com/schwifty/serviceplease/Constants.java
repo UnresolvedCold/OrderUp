@@ -6,7 +6,6 @@ import android.util.Log;
 import com.schwifty.serviceplease.Database_ORM.DaoSession;
 import com.schwifty.serviceplease.Database_ORM.ItemsDao;
 
-import org.greenrobot.greendao.annotation.Id;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -111,6 +110,16 @@ public class Constants
                 +"&date="+timeStamp;
         Log.d("_URL_",url);
         return url;
+    }
+
+    public static void SaveValues()
+    {
+
+    }
+
+    public static void RetriveValues()
+    {
+
     }
 
 }

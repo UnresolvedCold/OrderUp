@@ -66,233 +66,220 @@ public class MenuList
         {
             //Menu group inflator
             MenuGroup menuGroup = grpItr.next();
-            View view = UtilFunctions.ViewInflater(inflater,ViewParentElement,R_Layout_Template);
-            menuGroup.setGroupView(view);
-
-            String _grpName = menuGroup.GroupName;
-            if(_grpName.contains("_"))
-            {
-                _grpName = _grpName.split("_")[1];
-            }
-
-            ((TextView)(view.findViewById(R.id.template_menu_groupName))).setText(_grpName);
-
-            int count = 0;
-            //Inflate items
-            Iterator<MenuItem> itmItr = menuGroup.Items.iterator();
-            while(itmItr.hasNext()) {
-
-                //Menu UI
-
-                //Menu Response
-                final MenuItem item = itmItr.next();
 
 
-                //Search Conditions
-                boolean nameCondition;
-                boolean vegCondition;
+            Log.d("hundred_fow",""+menuGroup.getNAvailable()+" "+menuGroup.GroupName);
+            if(menuGroup.getNAvailable()>0) {
+                View view = UtilFunctions.ViewInflater(inflater, ViewParentElement, R_Layout_Template);
+                menuGroup.setGroupView(view);
 
-                if(searchName.equals("*"))
-                {
-                    nameCondition=true;
-                }
-                else
-                {
-                    nameCondition=item.ItemName.toLowerCase().contains(searchName.toLowerCase());
+
+                String _grpName = menuGroup.GroupName;
+                if (_grpName.contains("_")) {
+                    _grpName = _grpName.split("_")[1];
                 }
 
-                if(searchVeg.equals("*"))
-                {
-                    vegCondition=true;
-                }
-                else
-                {
-                    vegCondition = Boolean.parseBoolean(item.isVeg);
-                }
+                ((TextView) (view.findViewById(R.id.template_menu_groupName))).setText(_grpName);
+
+                int count = 0;
+                //Inflate items
+                Iterator<MenuItem> itmItr = menuGroup.Items.iterator();
+                while (itmItr.hasNext()) {
+
+                    //Menu UI
+
+                    //Menu Response
+                    final MenuItem item = itmItr.next();
 
 
-                //Search Logic
+                    //Search Conditions
+                    boolean nameCondition;
+                    boolean vegCondition;
 
-                if
-                (
-                     nameCondition
-                     &&vegCondition
-
-                )
-                {
-
-                    View itemView = UtilFunctions.ViewInflater(inflater, (LinearLayout) view.findViewById(R.id.template_menu_itemsList), R.layout.template_item);
-
-                    view.setVisibility(View.VISIBLE);
-
-                    Log.d("hundred",item.ItemName+" "+""+item.isAvailable);
-                    if(!item.isAvailable)
-                    {
-                        Log.d("hundred","GONE");
-
-                        itemView.setVisibility(GONE);
-                    }
-                    else
-                    {
-                        count++;
-                    }
-
-                    TextView vItemName = itemView.findViewById(R.id.template_menu_itemName);
-                    final View vAddButton = itemView.findViewById(R.id.template_menu_Add);
-                    final View vIncDecButtonHolder = itemView.findViewById(R.id.template_menu_IncDecHolder);
-                    View vIncQty = itemView.findViewById(R.id.template_menu_IncDecHolder_inc);
-                    View vDecQty = itemView.findViewById(R.id.template_menu_IncDecHolder_dec);
-                    final TextView vNQty = itemView.findViewById(R.id.template_menu_IncDecHolder_view);
-                    final TextView vDetails = itemView.findViewById(R.id.Details);
-
-                    ImageView veg_nonveg = itemView.findViewById(R.id.template_menu_veg_nonveg);
-
-                    final TextView vCost = itemView.findViewById(R.id.template_menu_cost);
-
-
-                    vItemName.setText(item.ItemName);
-                    vCost.setText("\u20B9" + item.price);
-
-                    if(!item.Details.contains("$Empty$")) {
-                        itemView.findViewById(R.id.DetailsContainer).setVisibility(VISIBLE);
-                        vDetails.setText(item.Details);
-                    }
-                    else
-                    {
-                        itemView.findViewById(R.id.DetailsContainer).setVisibility(GONE);
-                    }
-
-                    final List<Items> selItems = itemsDao.queryBuilder()
-                            .where(ItemsDao.Properties.ItemName.eq(
-                                    item.ItemName
-                            ))
-                            .where(ItemsDao.Properties.HasBeenOrdered.eq("false"))
-                            .list();
-
-                    if (selItems.size() > 0 && selItems.iterator().next().getIsPaid().equals("false")) {
-                        Items itm = selItems.iterator().next();
-                        vAddButton.setVisibility(GONE);
-                        vNQty.setText(itm.getQty() + "");
-                        vIncDecButtonHolder.setVisibility(View.VISIBLE);
-                    }
-
-
-                    if (item.isVeg.contains("true")) {
-                        veg_nonveg.setImageResource(R.drawable.icon_veg);
+                    if (searchName.equals("*")) {
+                        nameCondition = true;
                     } else {
-                        veg_nonveg.setImageResource(R.drawable.icon_nonveg);
+                        nameCondition = item.ItemName.toLowerCase().contains(searchName.toLowerCase());
                     }
 
-                    vAddButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                            t=null;
-                            final Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if(!activity.isFinishing())
-                                    {
-                                        t = UtilFunctions.showGuide(109L,activity.findViewById(R.id.viewcart),activity,"Click 'View Cart'",
-                                                "to have a view of your selected items","#e54d26", Gravity.TOP,
-                                                ((SelectedItemsApp) activity.getApplication()).getBasicUserDataSession().getBasicUserDataDao(),
-                                                TourGuide.Technique.Click);
-                                    }
-                                    else
-                                    {
-                                        t=null;
-                                    }
-                                }
-                            }, 400);
+                    if (searchVeg.equals("*")) {
+                        vegCondition = true;
+                    } else {
+                        vegCondition = Boolean.parseBoolean(item.isVeg);
+                    }
 
 
+                    //Search Logic
 
+                    if
+                    (
+                            nameCondition
+                                    && vegCondition
+
+                    ) {
+
+                        View itemView = UtilFunctions.ViewInflater(inflater, (LinearLayout) view.findViewById(R.id.template_menu_itemsList), R.layout.template_item);
+
+                        view.setVisibility(View.VISIBLE);
+
+                        Log.d("hundred", item.ItemName + " " + "" + item.isAvailable);
+                        if (!item.isAvailable) {
+                            Log.d("hundred", "GONE");
+
+                            itemView.setVisibility(GONE);
+                        } else {
+                            count++;
+                        }
+
+                        TextView vItemName = itemView.findViewById(R.id.template_menu_itemName);
+                        final View vAddButton = itemView.findViewById(R.id.template_menu_Add);
+                        final View vIncDecButtonHolder = itemView.findViewById(R.id.template_menu_IncDecHolder);
+                        View vIncQty = itemView.findViewById(R.id.template_menu_IncDecHolder_inc);
+                        View vDecQty = itemView.findViewById(R.id.template_menu_IncDecHolder_dec);
+                        final TextView vNQty = itemView.findViewById(R.id.template_menu_IncDecHolder_view);
+                        final TextView vDetails = itemView.findViewById(R.id.Details);
+
+                        ImageView veg_nonveg = itemView.findViewById(R.id.template_menu_veg_nonveg);
+
+                        final TextView vCost = itemView.findViewById(R.id.template_menu_cost);
+
+
+                        vItemName.setText(item.ItemName);
+                        vCost.setText("\u20B9" + item.price);
+
+                        if (!item.Details.contains("$Empty$")) {
+                            itemView.findViewById(R.id.DetailsContainer).setVisibility(VISIBLE);
+                            vDetails.setText(item.Details);
+                        } else {
+                            itemView.findViewById(R.id.DetailsContainer).setVisibility(GONE);
+                        }
+
+                        final List<Items> selItems = itemsDao.queryBuilder()
+                                .where(ItemsDao.Properties.ItemName.eq(
+                                        item.ItemName
+                                ))
+                                .where(ItemsDao.Properties.HasBeenOrdered.eq("false"))
+                                .list();
+
+                        if (selItems.size() > 0 && selItems.iterator().next().getIsPaid().equals("false")) {
+                            Items itm = selItems.iterator().next();
                             vAddButton.setVisibility(GONE);
+                            vNQty.setText(itm.getQty() + "");
                             vIncDecButtonHolder.setVisibility(View.VISIBLE);
-
-                            // itemsDao.insert(new Items(Long.parseLong(((itemsDao.loadAll().size())+1) + ""), item.ItemName, 1,res,"false",item.price));
-
-                            itemsDao.insert(new Items(System.currentTimeMillis(), item.ItemName, 1, res, "false", item.price, Table, item.isVeg,item.UID,
-                                    itemsDao,true));
-
-                            vNQty.setText("1");
-
-                            MenuAvtivity_ProceedBtn_Updater(activity);
-
-
                         }
-                    });
 
 
-                    vIncQty.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                        if (item.isVeg.contains("true")) {
+                            veg_nonveg.setImageResource(R.drawable.icon_veg);
+                        } else {
+                            veg_nonveg.setImageResource(R.drawable.icon_nonveg);
+                        }
 
-                            List<Items> selItems = itemsDao.queryBuilder()
-                                    .where(ItemsDao.Properties.ItemName.eq(
-                                            item.ItemName
-                                    ))
-                                    .where(ItemsDao.Properties.IsPaid.eq("false"))
-                                    .where(ItemsDao.Properties.HasBeenOrdered.eq("false"))
-                                    .list();
+                        vAddButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
 
-                            for (Items s : selItems) {
-                                int qty = s.getQty() + 1;
-                                Long id = s.getId();
-                                itemsDao.deleteByKey(s.getId());
-                                itemsDao.insert(new Items(id, item.ItemName, qty, res, "false", item.price, Table, item.isVeg,item.UID,itemsDao,false));
-                                vNQty.setText(qty + "");
+                                t = null;
+                                final Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (!activity.isFinishing()) {
+                                            t = UtilFunctions.showGuide(109L, activity.findViewById(R.id.viewcart), activity, "Click 'View Cart'",
+                                                    "to have a view of your selected items", "#e54d26", Gravity.TOP,
+                                                    ((SelectedItemsApp) activity.getApplication()).getBasicUserDataSession().getBasicUserDataDao(),
+                                                    TourGuide.Technique.Click);
+                                        } else {
+                                            t = null;
+                                        }
+                                    }
+                                }, 400);
+
+
+                                vAddButton.setVisibility(GONE);
+                                vIncDecButtonHolder.setVisibility(View.VISIBLE);
+
+                                // itemsDao.insert(new Items(Long.parseLong(((itemsDao.loadAll().size())+1) + ""), item.ItemName, 1,res,"false",item.price));
+
+                                itemsDao.insert(new Items(System.currentTimeMillis(), item.ItemName, 1, res, "false", item.price, Table, item.isVeg, item.UID,
+                                        itemsDao, true));
+
+                                vNQty.setText("1");
+
+                                MenuAvtivity_ProceedBtn_Updater(activity);
+
+
                             }
-
-                            MenuAvtivity_ProceedBtn_Updater(activity);
-
-
-                        }
-                    });
+                        });
 
 
-                    vDecQty.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                        vIncQty.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
 
-                            List<Items> selItems = itemsDao.queryBuilder()
-                                    .where(ItemsDao.Properties.ItemName.eq(
-                                            item.ItemName
-                                    ))
-                                    .where(ItemsDao.Properties.IsPaid.eq("false"))
-                                    .where(ItemsDao.Properties.HasBeenOrdered.eq("false"))
-                                    .list();
+                                List<Items> selItems = itemsDao.queryBuilder()
+                                        .where(ItemsDao.Properties.ItemName.eq(
+                                                item.ItemName
+                                        ))
+                                        .where(ItemsDao.Properties.IsPaid.eq("false"))
+                                        .where(ItemsDao.Properties.HasBeenOrdered.eq("false"))
+                                        .list();
 
-                            for (Items s : selItems) {
-                                int qty = s.getQty() - 1;
-                                Long id = s.getId();
-                                itemsDao.deleteByKey(s.getId());
-
-                                if (qty > 0) {
-                                    itemsDao.insert(new Items(id, item.ItemName, qty, res, "false", item.price, Table, item.isVeg,item.UID,itemsDao,true));
+                                for (Items s : selItems) {
+                                    int qty = s.getQty() + 1;
+                                    Long id = s.getId();
+                                    itemsDao.deleteByKey(s.getId());
+                                    itemsDao.insert(new Items(id, item.ItemName, qty, res, "false", item.price, Table, item.isVeg, item.UID, itemsDao, false));
                                     vNQty.setText(qty + "");
-
-                                } else {
-                                    vIncDecButtonHolder.setVisibility(GONE);
-                                    vNQty.setText("0");
-                                    vAddButton.setVisibility(View.VISIBLE);
                                 }
+
+                                MenuAvtivity_ProceedBtn_Updater(activity);
+
+
                             }
+                        });
 
-                            MenuAvtivity_ProceedBtn_Updater(activity);
 
-                        }
-                    });
+                        vDecQty.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
 
-                    MenuAvtivity_ProceedBtn_Updater(activity);
+                                List<Items> selItems = itemsDao.queryBuilder()
+                                        .where(ItemsDao.Properties.ItemName.eq(
+                                                item.ItemName
+                                        ))
+                                        .where(ItemsDao.Properties.IsPaid.eq("false"))
+                                        .where(ItemsDao.Properties.HasBeenOrdered.eq("false"))
+                                        .list();
+
+                                for (Items s : selItems) {
+                                    int qty = s.getQty() - 1;
+                                    Long id = s.getId();
+                                    itemsDao.deleteByKey(s.getId());
+
+                                    if (qty > 0) {
+                                        itemsDao.insert(new Items(id, item.ItemName, qty, res, "false", item.price, Table, item.isVeg, item.UID, itemsDao, true));
+                                        vNQty.setText(qty + "");
+
+                                    } else {
+                                        vIncDecButtonHolder.setVisibility(GONE);
+                                        vNQty.setText("0");
+                                        vAddButton.setVisibility(View.VISIBLE);
+                                    }
+                                }
+
+                                MenuAvtivity_ProceedBtn_Updater(activity);
+
+                            }
+                        });
+
+                        MenuAvtivity_ProceedBtn_Updater(activity);
+                    } else if (count <= 0) {
+                        view.setVisibility(GONE);
+                    }
+
+
                 }
-                else if(count<=0)
-                {
-                    view.setVisibility(GONE);
-                }
-
-
             }
 
         }
@@ -403,6 +390,22 @@ class MenuGroup
     public View GroupView;
     public List<MenuItem> Items;
 
+    public int getNAvailable()
+    {
+        Iterator<MenuItem> i = this.Items.iterator();
+
+        while(i.hasNext())
+        {
+            MenuItem _i = i.next();
+            if(_i.isAvailable)
+            {
+                return 1;
+            }
+        }
+
+        return -1;
+    }
+
     MenuGroup(String groupName)
     {
         if(groupName.contains("_"))GroupName=groupName.split("_")[1];
@@ -425,7 +428,19 @@ class MenuGroup
 
     public int getNItems()
     {
-        return Items.size();
+        Iterator<MenuItem> i = this.Items.iterator();
+
+        int count =0;
+        while(i.hasNext())
+        {
+            MenuItem _i = i.next();
+            if(_i.isAvailable)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
 }

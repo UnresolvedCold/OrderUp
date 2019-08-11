@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         //SendDataToMenuActivity("resid1,5,0");
-                        //SendDataToMallShops("Mall=MallUID");
+                       // SendDataToMallShops("Mall=MallUID");
                     }
                 });
 
