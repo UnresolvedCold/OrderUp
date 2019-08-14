@@ -1164,6 +1164,7 @@ public class OrderedItemsActivity extends AppCompatActivity {
 
             if(t!=null)t.cleanUp();
 
+
             final Dialog dialog = new Dialog(OrderedItemsActivity.this);
             dialog.setContentView(R.layout.dialog_paymentmethod);
             dialog.setTitle("Payment Method");
@@ -1198,13 +1199,17 @@ public class OrderedItemsActivity extends AppCompatActivity {
                                 public void onCompleted(Exception e, String result)
                                 {
 
-                                    Log.d("HTML",result.split(":")[1]);
+                                    if(result.contains(":")) {
+                                        String invoice = result.split(":")[1];
 
-                                    String invoice = result.split(":")[1];
+                                        if(d!=null)d.dismiss();
 
-                                    d.dismiss();
-
-                                    CallWaiterToCompleteThePayment("Cash",invoice);
+                                        CallWaiterToCompleteThePayment("Cash", invoice);
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(OrderedItemsActivity.this, "Something went wrong\nPlease restart the app to complete the payment", Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             });
 
@@ -1229,12 +1234,17 @@ public class OrderedItemsActivity extends AppCompatActivity {
                                 @Override
                                 public void onCompleted(Exception e, String result) {
 
-                                    Log.d("HTML",result.split(":")[1]);
+                                    if(result.contains(":")) {
+                                        String invoice = result.split(":")[1];
+                                        d.dismiss();
 
-                                    String invoice = result.split(":")[1];
-                                    d.dismiss();
+                                        CallWaiterToCompleteThePayment("Card", invoice);
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(OrderedItemsActivity.this, "Something went wrong\nPlease restart the app to complete the payment", Toast.LENGTH_LONG).show();
 
-                                    CallWaiterToCompleteThePayment("Card",invoice);
+                                    }
                                 }
                             });
 
