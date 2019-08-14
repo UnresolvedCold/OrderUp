@@ -1,6 +1,6 @@
 # OrderUp
 The aim of this project is to automate the restaurants and malls 
-<a href = "https://play.google.com/store/apps/details?id=com.schwifty.serviceplease">Click here to view the apk</>
+<a href = "https://play.google.com/store/apps/details?id=com.schwifty.serviceplease">Click here to view the apk</a>
 
 ##Softwares used 
 1. Android studio 3.3.1
